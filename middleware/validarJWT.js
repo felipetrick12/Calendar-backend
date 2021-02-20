@@ -8,7 +8,7 @@ const validarJWT =( req,res=response,next ) => {
         if(!token){
             return res.status(401).json({
                 ok:false,
-                msg: 'no ha token en la peticion'
+                msg: 'no hay token en la peticion'
             })
         }
 
