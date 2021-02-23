@@ -99,8 +99,8 @@ const eliminarEvento = async (req,res= response) => {
 
         const evento = await Evento.findById(eventoID);
 
-        if(!eventoID){
-            return response.status(404).json({
+        if(!evento){
+            return res.status(404).json({
                 ok:false,
                 msg : 'no se encontro un evento con ese id'
             })
@@ -112,6 +112,7 @@ const eliminarEvento = async (req,res= response) => {
                 msg: 'No tiene permiso para eliminar este evento'
             })
         }
+       console.log(evento.user)
 
         const eventoEliminado = await Evento.findOneAndDelete(eventoID);
          
