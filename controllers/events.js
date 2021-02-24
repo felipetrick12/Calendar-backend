@@ -113,7 +113,7 @@ const eliminarEvento = async (req,res= response) => {
                 msg: 'No tiene permiso para eliminar este evento'
             })
         }
-       console.log(evento.user)
+    
 
         const eventoEliminado = await Evento.findByIdAndRemove(eventoID);
          
