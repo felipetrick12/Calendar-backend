@@ -17,6 +17,7 @@ const getEventos = async (req,res= response) => {
 
 }
 
+
 const crearEvento = async (req,res= response) => { 
 
     const evento = new Evento(req.body);
@@ -71,7 +72,7 @@ const actualizarEvento = async (req,res= response) => {
             user:uid
         }
     
-        const eventoActualizado =await Evento.findOneAndUpdate(eventoID,nuevoEvento,{new:true});
+        const eventoActualizado =await Evento.findByIdAndUpdate(eventoID,nuevoEvento,{new:true});
          
         res.status(200).json({
             ok:true,
@@ -114,7 +115,7 @@ const eliminarEvento = async (req,res= response) => {
         }
        console.log(evento.user)
 
-        const eventoEliminado = await Evento.findOneAndDelete(eventoID);
+        const eventoEliminado = await Evento.findByIdAndRemove(eventoID);
          
         res.status(200).json({
             ok:true,
