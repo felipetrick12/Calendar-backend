@@ -1,5 +1,6 @@
 const express = require('express');
 const { dbConection } = require('./database/config');
+const path= require('path');
 var cors = require('cors');
 require('dotenv').config();
 
@@ -16,13 +17,17 @@ app.use(cors());
 
 //directorio publico
 // middleware es una peticion que se ejecuta cuando pasa por un lugar
-app.use( express.static('public'));
+
+const publicPath = path.join (__dirname, '..', 'public');
+app.use (express.static (publicPath));
 
 app.use( express.json() ); //es para ejecutar la funcion para que escuche los json y los cargue
 
 //rutas// llama al middleware funcion donde el path es api,auth y lo extrae del routes,auth
 app.use( '/api/auth',require('./routes/auth')); 
 app.use( '/api/events',require('./routes/events')); 
+
+
 
 //escuchar peticiones
 app.listen(process.env.PORT,()=>{
